@@ -61,7 +61,7 @@ export function buildVegetation(opts: { assets: Assets; preset: Preset; grid: Wo
   grass.receiveShadow = true;
   grass.name = 'grass';
   // Grama em tons de verde, com parte dourada e ocre, como o chão iluminado da referência.
-  const greens = ['#5fa53a', '#7bbd4a', '#4b8f32', '#8fc85a', '#c9a84a', '#a8b84a', '#d8b860'].map((h) => new THREE.Color(h));
+  const greens = ['#6fbf3a', '#8fd24a', '#5aa83a', '#b5dc4a', '#d8c24a', '#c2d24a', '#e0b84a'].map((h) => new THREE.Color(h));
   const corruptGreen = new THREE.Color('#6a4a7a');
   let placed = 0;
   let clumpX = 0, clumpZ = 0, clumpLeft = 0;

@@ -23,7 +23,7 @@ export class PostFX {
     this.ao = new GTAOPass(scene, camera, width, height);
     this.ao.blendIntensity = 0.9;
     this.composer.addPass(this.ao);
-    this.bokeh = new BokehPass(scene, camera, { focus: 10, aperture: 0.0004, maxblur: 0.009 });
+    this.bokeh = new BokehPass(scene, camera, { focus: 10, aperture: 0.0006, maxblur: 0.012 });
     this.composer.addPass(this.bokeh);
     // Bloom por limiar de luminância: só o que passa de ~0,85 brilha, com raio curto para evitar halos gigantes.
     this.bloom = new UnrealBloomPass(new THREE.Vector2(width, height), 0.28, 0.35, 0.85);
@@ -51,8 +51,8 @@ export class PostFX {
   /** Intensidade do DOF entre 0 (desligado na prática) e 1 (máximo). Abertura e raio crescem juntos. */
   setDofStrength(v: number): void {
     const u = this.bokeh.uniforms as Record<string, { value: number }>;
-    u.aperture.value = 0.0006 * v;
-    u.maxblur.value = 0.009 * v;
+    u.aperture.value = 0.0009 * v;
+    u.maxblur.value = 0.012 * v;
   }
 
   setFocus(distance: number): void {

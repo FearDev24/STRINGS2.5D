@@ -102,7 +102,7 @@ function woodWall() {
   const r = new Raster(64, 64);
   for (let y = 0; y < 64; y++) for (let x = 0; x < 64; x++) {
     const plank = Math.floor(y / 16);
-    let c = lerpC(hex('#5e3b22'), hex('#9b6638'), fbm(x / 6, y / 3, 16, 90 + plank, 2));
+    let c = lerpC(hex('#6a3d1e'), hex('#b07038'), fbm(x / 6, y / 3, 16, 90 + plank, 2));
     if (y % 16 === 0) c = hex('#2e1b10');
     if (((x + plank * 23) % 41) === 0) c = lerpC(c, hex('#2e1b10'), 0.5);
     r.put(x, y, c);
@@ -125,8 +125,9 @@ function shingle() {
     const row = Math.floor(y / 6);
     const sx = (x + (row % 2 ? 4 : 0)) % 8, sy = y % 6;
     const d = Math.hypot(sx - 4, (sy - 6) * 1.2);
-    let c = lerpC(hex('#3b3f5c'), hex('#6d6a8a'), fbm(x / 5, y / 5, 13, 150, 2));
-    if (d > 4.6 || sy === 0) c = hex('#1f2030');
+    // Telhas avermelhadas, como nas casas da referência.
+    let c = lerpC(hex('#8a2e1e'), hex('#c95a32'), fbm(x / 5, y / 5, 13, 150, 2));
+    if (d > 4.6 || sy === 0) c = hex('#4a1a12');
     r.put(x, y, c);
   }
   save('textures/shingle_roof.png', r, { technique: 'telhas em escamas com sulco', type: 'texture' });
