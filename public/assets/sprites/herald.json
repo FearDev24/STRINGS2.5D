@@ -1,0 +1,47 @@
+{
+  "image": "herald.png",
+  "width": 256,
+  "height": 64,
+  "frames": {
+    "flap_0": {
+      "x": 0,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    "flap_1": {
+      "x": 64,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    "flap_2": {
+      "x": 128,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    },
+    "flap_3": {
+      "x": 192,
+      "y": 0,
+      "w": 64,
+      "h": 64
+    }
+  },
+  "animations": {
+    "flap": [
+      "flap_0",
+      "flap_1",
+      "flap_2",
+      "flap_3"
+    ]
+  },
+  "generator": "tools/generate-assets.mjs",
+  "technique": "arauto 64x64 com seis asas de penas desenhadas por polígonos, batimento em 4 quadros",
+  "frameWidth": 64,
+  "frameHeight": 64,
+  "anchor": [
+    32,
+    40
+  ]
+}

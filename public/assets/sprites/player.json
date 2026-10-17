@@ -1,0 +1,239 @@
+{
+  "image": "player.png",
+  "width": 144,
+  "height": 128,
+  "frames": {
+    "down_idle0": {
+      "x": 0,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "down_idle1": {
+      "x": 24,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "down_walkA": {
+      "x": 48,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "down_walkB": {
+      "x": 72,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "down_attack": {
+      "x": 96,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "down_hurt": {
+      "x": 120,
+      "y": 0,
+      "w": 24,
+      "h": 32
+    },
+    "up_idle0": {
+      "x": 0,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "up_idle1": {
+      "x": 24,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "up_walkA": {
+      "x": 48,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "up_walkB": {
+      "x": 72,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "up_attack": {
+      "x": 96,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "up_hurt": {
+      "x": 120,
+      "y": 32,
+      "w": 24,
+      "h": 32
+    },
+    "left_idle0": {
+      "x": 0,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "left_idle1": {
+      "x": 24,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "left_walkA": {
+      "x": 48,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "left_walkB": {
+      "x": 72,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "left_attack": {
+      "x": 96,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "left_hurt": {
+      "x": 120,
+      "y": 64,
+      "w": 24,
+      "h": 32
+    },
+    "right_idle0": {
+      "x": 0,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    },
+    "right_idle1": {
+      "x": 24,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    },
+    "right_walkA": {
+      "x": 48,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    },
+    "right_walkB": {
+      "x": 72,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    },
+    "right_attack": {
+      "x": 96,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    },
+    "right_hurt": {
+      "x": 120,
+      "y": 96,
+      "w": 24,
+      "h": 32
+    }
+  },
+  "animations": {
+    "idle_down": [
+      "down_idle0",
+      "down_idle1"
+    ],
+    "walk_down": [
+      "down_walkA",
+      "down_idle0",
+      "down_walkB",
+      "down_idle0"
+    ],
+    "attack_down": [
+      "down_attack"
+    ],
+    "hurt_down": [
+      "down_hurt"
+    ],
+    "idle_up": [
+      "up_idle0",
+      "up_idle1"
+    ],
+    "walk_up": [
+      "up_walkA",
+      "up_idle0",
+      "up_walkB",
+      "up_idle0"
+    ],
+    "attack_up": [
+      "up_attack"
+    ],
+    "hurt_up": [
+      "up_hurt"
+    ],
+    "idle_left": [
+      "left_idle0",
+      "left_idle1"
+    ],
+    "walk_left": [
+      "left_walkA",
+      "left_idle0",
+      "left_walkB",
+      "left_idle0"
+    ],
+    "attack_left": [
+      "left_attack"
+    ],
+    "hurt_left": [
+      "left_hurt"
+    ],
+    "idle_right": [
+      "right_idle0",
+      "right_idle1"
+    ],
+    "walk_right": [
+      "right_walkA",
+      "right_idle0",
+      "right_walkB",
+      "right_idle0"
+    ],
+    "attack_right": [
+      "right_attack"
+    ],
+    "hurt_right": [
+      "right_hurt"
+    ]
+  },
+  "generator": "tools/generate-assets.mjs",
+  "technique": "herói 24x32 desenhado por primitivas (elipses, retângulos, linhas) + contorno automático",
+  "directions": [
+    "down",
+    "up",
+    "left",
+    "right"
+  ],
+  "poses": [
+    "idle0",
+    "idle1",
+    "walkA",
+    "walkB",
+    "attack",
+    "hurt"
+  ],
+  "frameWidth": 24,
+  "frameHeight": 32,
+  "anchor": [
+    12,
+    31
+  ]
+}

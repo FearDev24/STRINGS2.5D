@@ -1,0 +1,47 @@
+{
+  "image": "fragment.png",
+  "width": 64,
+  "height": 16,
+  "frames": {
+    "pulse_0": {
+      "x": 0,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "pulse_1": {
+      "x": 16,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "pulse_2": {
+      "x": 32,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "pulse_3": {
+      "x": 48,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    }
+  },
+  "animations": {
+    "pulse": [
+      "pulse_0",
+      "pulse_1",
+      "pulse_2",
+      "pulse_3"
+    ]
+  },
+  "generator": "tools/generate-assets.mjs",
+  "technique": "fragmento de cristal 16x16, 4 quadros de pulsação",
+  "frameWidth": 16,
+  "frameHeight": 16,
+  "anchor": [
+    8,
+    14
+  ]
+}

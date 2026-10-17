@@ -1,0 +1,251 @@
+{
+  "generatedBy": "tools/generate-assets.mjs",
+  "note": "Todos os recursos são gerados por código deste projeto. Nenhum arquivo de terceiros é usado.",
+  "assets": [
+    {
+      "file": "public/assets/textures/grass_ground.png",
+      "width": 256,
+      "height": 256,
+      "technique": "ruído fBm periódico + pontos de cor (tileável)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/dirt_path.png",
+      "width": 128,
+      "height": 128,
+      "technique": "ruído fBm periódico com seixos",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/stone_plaza.png",
+      "width": 128,
+      "height": 128,
+      "technique": "ladrilhos 32px com ruído fBm (tileável)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/moss_stone.png",
+      "width": 128,
+      "height": 128,
+      "technique": "pedra com musgo por ruído fBm (tileável)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/bark.png",
+      "width": 128,
+      "height": 256,
+      "technique": "ruído anisotrópico periódico (casca)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/corrupt_ground.png",
+      "width": 256,
+      "height": 256,
+      "technique": "ruído fBm + veios de ridged noise (tileável)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/wood_wall.png",
+      "width": 64,
+      "height": 64,
+      "technique": "tábuas horizontais com veio fBm",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/stone_wall.png",
+      "width": 64,
+      "height": 64,
+      "technique": "alvenaria de pedra em fiadas",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/shingle_roof.png",
+      "width": 64,
+      "height": 64,
+      "technique": "telhas em escamas com sulco",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/door.png",
+      "width": 16,
+      "height": 32,
+      "technique": "porta de tábuas desenhada por código",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/window_lit.png",
+      "width": 16,
+      "height": 16,
+      "technique": "janela iluminada (emissiva)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/vegetation\\leaf_clusters.png",
+      "width": 256,
+      "height": 256,
+      "technique": "folhagem: 170 folhas elípticas por agrupamento, sombreadas por altura",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/vegetation/leaf_clusters.json",
+      "width": 256,
+      "height": 256,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/vegetation\\flowers.png",
+      "width": 128,
+      "height": 16,
+      "technique": "flores de 5 pétalas em pixel art, 8 variantes",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/vegetation/flowers.json",
+      "width": 128,
+      "height": 16,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/vegetation\\mushrooms.png",
+      "width": 32,
+      "height": 16,
+      "technique": "cogumelos de duas cores",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/vegetation/mushrooms.json",
+      "width": 32,
+      "height": 16,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/vegetation\\ferns.png",
+      "width": 64,
+      "height": 32,
+      "technique": "samambaias: frondes com folíolos desenhados por linha",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/vegetation/ferns.json",
+      "width": 64,
+      "height": 32,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/textures/rock_moss.png",
+      "width": 64,
+      "height": 64,
+      "technique": "pedra com musgo por ruído (silhueta elíptica)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/light_shaft.png",
+      "width": 32,
+      "height": 256,
+      "technique": "gradiente gaussiano vertical (raio de sol)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/glow_soft.png",
+      "width": 64,
+      "height": 64,
+      "technique": "halo radial (aura aditiva)",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/textures/blob_shadow.png",
+      "width": 32,
+      "height": 16,
+      "technique": "sombra elíptica suave",
+      "type": "texture"
+    },
+    {
+      "file": "public/assets/sprites\\player.png",
+      "width": 144,
+      "height": 128,
+      "technique": "herói 24x32 desenhado por primitivas (elipses, retângulos, linhas) + contorno automático",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/player.json",
+      "width": 144,
+      "height": 128,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/sprites\\villager_a.png",
+      "width": 96,
+      "height": 128,
+      "technique": "aldeão 24x32 desenhado por primitivas, sem arma, com variação de cores",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/villager_a.json",
+      "width": 96,
+      "height": 128,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/sprites\\villager_b.png",
+      "width": 96,
+      "height": 128,
+      "technique": "aldeão 24x32 desenhado por primitivas, sem arma, com variação de cores",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/villager_b.json",
+      "width": 96,
+      "height": 128,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/sprites\\herald.png",
+      "width": 256,
+      "height": 64,
+      "technique": "arauto 64x64 com seis asas de penas desenhadas por polígonos, batimento em 4 quadros",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/herald.json",
+      "width": 256,
+      "height": 64,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/sprites\\creature.png",
+      "width": 256,
+      "height": 24,
+      "technique": "criatura corrompida 32x24 desenhada por primitivas, dissipação por remoção de pixels",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/creature.json",
+      "width": 256,
+      "height": 24,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    },
+    {
+      "file": "public/assets/sprites\\fragment.png",
+      "width": 64,
+      "height": 16,
+      "technique": "fragmento de cristal 16x16, 4 quadros de pulsação",
+      "type": "sprite-sheet"
+    },
+    {
+      "file": "public/assets/sprites/fragment.json",
+      "width": 64,
+      "height": 16,
+      "technique": "metadados de animação do sheet acima",
+      "type": "metadata"
+    }
+  ]
+}

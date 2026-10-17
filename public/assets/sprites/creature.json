@@ -1,0 +1,81 @@
+{
+  "image": "creature.png",
+  "width": 256,
+  "height": 24,
+  "frames": {
+    "walkA": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "walkB": {
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "attack": {
+      "x": 64,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "hurt": {
+      "x": 96,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "dissolve_0": {
+      "x": 128,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "dissolve_1": {
+      "x": 160,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "dissolve_2": {
+      "x": 192,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    },
+    "dissolve_3": {
+      "x": 224,
+      "y": 0,
+      "w": 32,
+      "h": 24
+    }
+  },
+  "animations": {
+    "walk": [
+      "walkA",
+      "walkB"
+    ],
+    "attack": [
+      "attack"
+    ],
+    "hurt": [
+      "hurt"
+    ],
+    "dissolve": [
+      "dissolve_0",
+      "dissolve_1",
+      "dissolve_2",
+      "dissolve_3"
+    ]
+  },
+  "generator": "tools/generate-assets.mjs",
+  "technique": "criatura corrompida 32x24 desenhada por primitivas, dissipação por remoção de pixels",
+  "frameWidth": 32,
+  "frameHeight": 24,
+  "anchor": [
+    16,
+    22
+  ]
+}

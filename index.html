@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Strings — Vila do Primeiro Fio</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/src/ui/style.css" />
+  </head>
+  <body>
+    <div id="app">
+      <canvas id="scene" aria-label="Cena do jogo"></canvas>
+
+      <div id="loader" class="overlay">
+        <div class="loader-card">
+          <h1>Strings</h1>
+          <p class="subtitle">Vila do Primeiro Fio</p>
+          <div class="bar"><div id="loader-fill"></div></div>
+          <p id="loader-label">Gerando recursos...</p>
+          <noscript>Este experimento precisa de JavaScript e WebGL2.</noscript>
+        </div>
+      </div>
+
+      <div id="hud" class="hidden">
+        <div id="area" class="panel area-label">Vila do Primeiro Fio</div>
+        <div id="hp" class="panel hp" aria-label="Vida"></div>
+
+        <div id="quest" class="panel quest">
+          <div class="quest-title">Ecos da Primeira Corda</div>
+          <div id="objective">—</div>
+        </div>
+
+        <div id="metrics" class="panel metrics hidden"></div>
+
+        <div id="prompt" class="prompt hidden"></div>
+        <div id="toast" class="toast hidden" role="status"></div>
+
+        <div id="dialog" class="dialog hidden" role="dialog" aria-live="polite">
+          <div id="dialog-speaker" class="speaker"></div>
+          <div id="dialog-text" class="text"></div>
+          <div class="hint">E / Enter para continuar</div>
+        </div>
+      </div>
+
+      <div id="pause" class="overlay hidden" role="dialog" aria-label="Menu de pausa">
+        <div class="menu-card">
+          <h2>Pausa</h2>
+          <button id="btn-resume" class="btn primary">Continuar</button>
+          <button id="btn-graphics" class="btn">Configurações gráficas</button>
+          <button id="btn-metrics" class="btn">Métricas técnicas (F3)</button>
+          <button id="btn-reset" class="btn danger">Reiniciar progresso</button>
+          <p class="fineprint">Esc fecha o menu. WASD/setas movem, E conversa, J ou Espaço ataca.</p>
+        </div>
+      </div>
+
+      <div id="graphics" class="overlay hidden" role="dialog" aria-label="Configurações gráficas">
+        <div class="menu-card wide">
+          <h2>Gráficos</h2>
+          <div class="presets" role="radiogroup" aria-label="Preset">
+            <button class="btn preset" data-preset="baixo">Baixo</button>
+            <button class="btn preset" data-preset="medio">Médio</button>
+            <button class="btn preset" data-preset="alto">Alto</button>
+          </div>
+          <p class="fineprint">Trocar o preset reconstrói a vegetação. Os efeitos abaixo podem ser ligados individualmente.</p>
+          <div id="toggles" class="toggles"></div>
+          <button id="btn-graphics-back" class="btn primary">Voltar</button>
+        </div>
+      </div>
+
+      <div id="complete" class="overlay hidden" role="dialog" aria-label="Missão concluída">
+        <div class="menu-card">
+          <div class="kicker">Missão concluída</div>
+          <h2>Ecos da Primeira Corda</h2>
+          <p>A corrupção recuou e a praça voltou a brilhar. Seu progresso fica salvo neste navegador.</p>
+          <button id="btn-complete" class="btn primary">Continuar explorando</button>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

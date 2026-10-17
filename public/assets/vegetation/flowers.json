@@ -1,0 +1,58 @@
+{
+  "image": "flowers.png",
+  "width": 128,
+  "height": 16,
+  "frames": {
+    "flower_0": {
+      "x": 0,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_1": {
+      "x": 16,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_2": {
+      "x": 32,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_3": {
+      "x": 48,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_4": {
+      "x": 64,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_5": {
+      "x": 80,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_6": {
+      "x": 96,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "flower_7": {
+      "x": 112,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    }
+  },
+  "animations": {},
+  "generator": "tools/generate-assets.mjs",
+  "technique": "flores de 5 pétalas em pixel art, 8 variantes"
+}

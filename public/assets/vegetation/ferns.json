@@ -1,0 +1,22 @@
+{
+  "image": "ferns.png",
+  "width": 64,
+  "height": 32,
+  "frames": {
+    "fern_0": {
+      "x": 0,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    },
+    "fern_1": {
+      "x": 32,
+      "y": 0,
+      "w": 32,
+      "h": 32
+    }
+  },
+  "animations": {},
+  "generator": "tools/generate-assets.mjs",
+  "technique": "samambaias: frondes com folíolos desenhados por linha"
+}

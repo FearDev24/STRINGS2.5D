@@ -1,0 +1,22 @@
+{
+  "image": "mushrooms.png",
+  "width": 32,
+  "height": 16,
+  "frames": {
+    "mushroom_0": {
+      "x": 0,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    },
+    "mushroom_1": {
+      "x": 16,
+      "y": 0,
+      "w": 16,
+      "h": 16
+    }
+  },
+  "animations": {},
+  "generator": "tools/generate-assets.mjs",
+  "technique": "cogumelos de duas cores"
+}
