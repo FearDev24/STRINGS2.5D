@@ -161,9 +161,12 @@ export class Hud {
     preset(p: PresetName): void;
     toggle(key: keyof EffectToggles, value: boolean): void;
     weather(w: WeatherName): void;
+    dof(v: number): void;
     back(): void;
   }): void {
     $('btn-graphics-back').onclick = handlers.back;
+    const range = $('dof-range') as HTMLInputElement;
+    range.oninput = () => handlers.dof(Number(range.value) / 100);
     const presetButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.btn.preset'));
     presetButtons.forEach((b) => {
       b.onclick = () => handlers.preset(b.dataset.preset as PresetName);

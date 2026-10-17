@@ -13,7 +13,7 @@ import { buildVegetation, buildCorruption, Vegetation } from './world/vegetation
 import { buildVillage, Village } from './world/village';
 import { buildAtmosphere, Atmosphere } from './world/atmosphere';
 import { Player, Herald, Villager, Fragment, Creature, createVillagers, createFragments, createCreature } from './entities/characters';
-import { ParticlePool } from './entities/billboard';
+import { ParticlePool, Billboard } from './entities/billboard';
 import { ProgressStore, defaultStorage, loadSettings, saveSettings, StoredSettings } from './game/storage';
 import * as Q from './game/quest';
 import { Hud, setLoader, hideLoader } from './ui/hud';
@@ -97,6 +97,7 @@ class Game {
       preset: (p) => this.setPreset(p),
       toggle: (key, value) => this.setToggle(key, value),
       weather: (w) => this.setWeather(w),
+      dof: (v) => this.setDof(v),
       back: () => this.closeGraphics(),
     });
     this.hud.bindComplete(() => {
@@ -175,6 +176,7 @@ class Game {
     this.scene.fog = t.fog ? this.dyn.atmosphere.fog : null;
     if (!this.postfx) {
       this.postfx = new PostFX(this.renderer, this.scene, this.cam.camera, window.innerWidth, window.innerHeight);
+      this.postfx.setDofStrength(this.settings.dofStrength);
       this.postfx.apply(t, true);
       this.postfx.setSize(window.innerWidth, window.innerHeight, pr);
     }
@@ -217,6 +219,12 @@ class Game {
     saveSettings(this.storage, this.settings);
     this.applyToggles();
     this.hud.syncGraphics(this.settings.preset, this.effectiveToggles(), this.settings.weather);
+  }
+
+  private setDof(v: number): void {
+    this.settings.dofStrength = v;
+    saveSettings(this.storage, this.settings);
+    this.postfx?.setDofStrength(v);
   }
 
   private setWeather(w: WeatherName): void {
@@ -362,6 +370,8 @@ class Game {
     this.renderer.info.reset();
     this.update(dt);
     this.postfx.setFocus(this.cam.focusDistance(this.player.pos));
+    // Yaw da câmera em torno do eixo vertical; todos os billboards herdam esse valor.
+    Billboard.cameraYaw = Math.atan2(this.cam.camera.position.x - this.player.pos.x, this.cam.camera.position.z - this.player.pos.z);
     this.postfx.render(dt);
     this.input.endFrame();
     this.updateMetrics(dt);

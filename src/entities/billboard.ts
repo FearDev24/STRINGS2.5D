@@ -14,16 +14,29 @@ export class Billboard {
     this.width = worldHeight * aspect;
     const geo = new THREE.PlaneGeometry(this.width, this.height);
     geo.translate(0, this.height / 2, 0); // base no ponto de origem
+    // Emissão com a própria textura: um preenchimento suave que impede a silhueta escura
+    // quando o sol vem de trás (contraluz), sem alterar a iluminação do cenário.
     this.mat = new THREE.MeshStandardMaterial({
       map: initial, alphaTest: 0.5, side: THREE.DoubleSide, roughness: 0.9, metalness: 0,
+      emissive: '#ffffff', emissiveMap: initial, emissiveIntensity: 0.45,
     });
     this.mesh = new THREE.Mesh(geo, this.mat);
     this.mesh.castShadow = false;
     this.mesh.receiveShadow = false;
   }
 
+  /** Desenha por cima da vegetação (sem teste de profundidade), para o herói nunca sumir atrás de copas. */
+  setAlwaysVisible(on: boolean): void {
+    this.mat.depthTest = !on;
+    this.mesh.renderOrder = on ? 10 : 0;
+    this.mat.needsUpdate = true;
+  }
+
   setFrame(tex: THREE.Texture): void {
-    if (this.mat.map !== tex) this.mat.map = tex;
+    if (this.mat.map !== tex) {
+      this.mat.map = tex;
+      this.mat.emissiveMap = tex;
+    }
   }
 
   setTint(color: THREE.ColorRepresentation): void {
@@ -36,8 +49,11 @@ export class Billboard {
     this.mat.depthWrite = alpha >= 1;
   }
 
-  faceCamera(camX: number, camZ: number): void {
-    this.mesh.rotation.y = Math.atan2(camX - this.mesh.position.x, camZ - this.mesh.position.z);
+  /** Todos os billboards usam o mesmo yaw, o da câmera. Assim nenhum sprite gira ao andar. */
+  static cameraYaw = 0;
+
+  faceCamera(_camX: number, _camZ: number): void {
+    this.mesh.rotation.y = Billboard.cameraYaw;
   }
 
   dispose(): void {

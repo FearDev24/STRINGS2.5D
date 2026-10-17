@@ -94,12 +94,13 @@ export interface StoredSettings {
   overrides: Partial<Record<string, boolean>>;
   showMetrics: boolean;
   weather: WeatherName;
+  dofStrength: number;
 }
 
 const WEATHER_NAMES: WeatherName[] = ['dourado', 'crepusculo', 'chuva', 'neve'];
 
 export function loadSettings(storage: KeyValueStorage | null): StoredSettings {
-  const fallback: StoredSettings = { preset: 'alto', overrides: {}, showMetrics: false, weather: 'dourado' };
+  const fallback: StoredSettings = { preset: 'alto', overrides: {}, showMetrics: false, weather: 'dourado', dofStrength: 0.4 };
   try {
     const raw = storage?.getItem(SETTINGS_KEY);
     if (!raw) return fallback;
@@ -111,6 +112,7 @@ export function loadSettings(storage: KeyValueStorage | null): StoredSettings {
       overrides: data.overrides && typeof data.overrides === 'object' ? data.overrides : {},
       showMetrics: Boolean(data.showMetrics),
       weather,
+      dofStrength: typeof data.dofStrength === 'number' ? Math.min(1, Math.max(0, data.dofStrength)) : 0.4,
     };
   } catch {
     return fallback;

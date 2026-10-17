@@ -37,6 +37,7 @@ export class Player {
     const meta = assets.sheet('player').meta;
     for (const key of Object.keys(meta.frames)) this.frames.set(key, assets.frame('player', key));
     this.sprite = new Billboard(this.frames.get('down_idle0')!, 1.7, 24 / 32);
+    this.sprite.setAlwaysVisible(true);
     this.group.add(this.sprite.mesh);
     this.shadow = blobShadow(assets, 1.2);
     this.group.add(this.shadow);

@@ -14,7 +14,7 @@ export type WeatherName = 'dourado' | 'crepusculo' | 'chuva' | 'neve';
 
 // Cada clima troca névoa, céu, cor e intensidade do sol e da luz ambiente.
 export const WEATHERS: Record<WeatherName, { label: string; fog: string; density: number; sun: string; sunI: number; top: string; horizon: string; hemi: number; rays: number }> = {
-  dourado: { label: 'Hora dourada', fog: '#d8a06a', density: 0.012, sun: '#ffb860', sunI: 3.2, top: '#f0a862', horizon: '#ffd49a', hemi: 1.05, rays: 1 },
+  dourado: { label: 'Hora dourada', fog: '#d8a06a', density: 0.009, sun: '#ffb860', sunI: 2.6, top: '#f0a862', horizon: '#ffd49a', hemi: 0.8, rays: 1 },
   crepusculo: { label: 'Crepúsculo', fog: '#8a5a8a', density: 0.026, sun: '#ff8a5a', sunI: 1.8, top: '#4a3a6a', horizon: '#d0708a', hemi: 0.7, rays: 0.4 },
   chuva: { label: 'Chuva', fog: '#7a7f8a', density: 0.03, sun: '#c8c8d8', sunI: 1.2, top: '#5a6070', horizon: '#9aa0aa', hemi: 0.8, rays: 0.05 },
   neve: { label: 'Neve', fog: '#c8d0e0', density: 0.028, sun: '#e0e8ff', sunI: 1.6, top: '#8a98b8', horizon: '#d8e0f0', hemi: 1.0, rays: 0.1 },
@@ -106,7 +106,7 @@ export function buildAtmosphere(assets: Assets, preset: Preset): Atmosphere {
   const sky = skyDome();
   group.add(sky);
 
-  const hemi = new THREE.HemisphereLight('#ffd6a0', '#4e3a24', 1.05);
+  const hemi = new THREE.HemisphereLight('#ffd6a0', '#4e3a24', 0.8);
   group.add(hemi);
 
   const sun = new THREE.DirectionalLight('#ffb860', 3.2);
