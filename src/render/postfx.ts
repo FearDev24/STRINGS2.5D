@@ -30,7 +30,8 @@ export class PostFX {
     this.composer.addPass(this.bloom);
     this.output = new OutputPass();
     this.composer.addPass(this.output);
-    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    // Neutral (Khronos PBR) preserva a saturação das cores; o ACES anterior dessaturava as copas e a grama.
+    renderer.toneMapping = THREE.NeutralToneMapping;
     // OutputPass aplica tonemapping e a conversão para sRGB uma única vez; não há correção de gamma extra.
     renderer.toneMappingExposure = 1.0;
   }

@@ -53,7 +53,7 @@ export const PRESETS: Record<PresetName, Preset> = {
     shadowMapSize: 2048,
     grassBlades: 42000,
     treeCount: 130,
-    flowerCount: 3600,
+    flowerCount: 5200,
     particleRate: 1,
     fireflies: 220,
     // GTAO fica desligado por padrão: nesta cena ele escurece a floresta inteira (ver RELATORIO_TECNICO.md).

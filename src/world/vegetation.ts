@@ -142,7 +142,8 @@ export function buildVegetation(opts: { assets: Assets; preset: Preset; grid: Wo
   cores.name = 'canopy-cores';
 
   const canopyTex = [0, 1, 2, 3].map((k) => assets.frame('leaf_clusters', `cluster_${k}`));
-  const canopyPlanes = 7;
+  // Mais camadas de folhagem por árvore: copas volumosas, como na referência.
+  const canopyPlanes = 12;
   const canopyGeo = new THREE.PlaneGeometry(1, 1);
   const canopyMats = canopyTex.map((t) => withWind(new THREE.MeshStandardMaterial({
     map: t, alphaTest: 0.42, side: THREE.DoubleSide, roughness: 0.85,
