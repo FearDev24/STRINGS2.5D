@@ -60,7 +60,8 @@ export function buildVegetation(opts: { assets: Assets; preset: Preset; grid: Wo
   const grass = new THREE.InstancedMesh(bladeGeo, grassMat, grassCount);
   grass.receiveShadow = true;
   grass.name = 'grass';
-  const greens = ['#5fa53a', '#7bbd4a', '#4b8f32', '#8fc85a', '#6aa844', '#b7cf5e'].map((h) => new THREE.Color(h));
+  // Grama em tons de verde, com parte dourada e ocre, como o chão iluminado da referência.
+  const greens = ['#5fa53a', '#7bbd4a', '#4b8f32', '#8fc85a', '#c9a84a', '#a8b84a', '#d8b860'].map((h) => new THREE.Color(h));
   const corruptGreen = new THREE.Color('#6a4a7a');
   let placed = 0;
   let clumpX = 0, clumpZ = 0, clumpLeft = 0;

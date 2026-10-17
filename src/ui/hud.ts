@@ -1,5 +1,6 @@
 // HUD em DOM: vida, missão, diálogo com digitação, menus, métricas e tela de conclusão.
 import { EffectToggles, PresetName, PRESETS } from '../core/config';
+import type { WeatherName } from '../world/atmosphere';
 
 const $ = <T extends HTMLElement>(id: string) => {
   const el = document.getElementById(id);
@@ -159,12 +160,16 @@ export class Hud {
   bindGraphics(handlers: {
     preset(p: PresetName): void;
     toggle(key: keyof EffectToggles, value: boolean): void;
+    weather(w: WeatherName): void;
     back(): void;
   }): void {
     $('btn-graphics-back').onclick = handlers.back;
     const presetButtons = Array.from(document.querySelectorAll<HTMLButtonElement>('.btn.preset'));
     presetButtons.forEach((b) => {
       b.onclick = () => handlers.preset(b.dataset.preset as PresetName);
+    });
+    document.querySelectorAll<HTMLButtonElement>('.btn.weather').forEach((b) => {
+      b.onclick = () => handlers.weather(b.dataset.weather as WeatherName);
     });
     const box = $('toggles');
     box.innerHTML = '';
@@ -179,10 +184,18 @@ export class Hud {
     });
   }
 
-  syncGraphics(preset: PresetName, toggles: EffectToggles): void {
+  setClock(time: string, label: string): void {
+    $('clock-time').textContent = time;
+    $('clock-label').textContent = label;
+  }
+
+  syncGraphics(preset: PresetName, toggles: EffectToggles, weather: WeatherName): void {
     document.querySelectorAll<HTMLButtonElement>('.btn.preset').forEach((b) => {
       b.setAttribute('aria-checked', String(b.dataset.preset === preset));
       b.classList.toggle('primary', b.dataset.preset === preset);
+    });
+    document.querySelectorAll<HTMLButtonElement>('.btn.weather').forEach((b) => {
+      b.classList.toggle('primary', b.dataset.weather === weather);
     });
     document.querySelectorAll<HTMLInputElement>('#toggles input').forEach((input) => {
       input.checked = toggles[input.dataset.key as keyof EffectToggles];

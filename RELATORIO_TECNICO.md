@@ -154,6 +154,28 @@ Notas revisadas (0 a 10), com a referência como base:
 5. **Densidade de flores e folhagem:** mais touceiras coloridas no chão e nas bordas da câmera.
 6. **Clima e horário:** ciclo de luz e, se for o caso, chuva e neve. Não estava no escopo inicial, mas as referências os mostram.
 
+## 5c. Passagem visual seguindo a referência (v3)
+
+Depois da seção 5b, foi feita uma passagem para aproximar a demo das cinco referências, sem copiar sprites ou texturas delas. Tudo continua gerado por código.
+
+O que mudou:
+- **Luz:** sol de contraluz âmbar (`#ffb860`, intensidade 3,2), luz hemisférica quente, céu e névoa dourados, raios de sol mais fortes e exposição 1,12.
+- **Bloom:** limiar 0,72 e força 0,55, para realçar as bordas iluminadas.
+- **Copas:** o gerador passou a produzir agrupamentos laranja e vermelho, além dos verdes. A grama ganhou tons ocres.
+- **Flores:** 3.600 no preset Alto (antes 1.800) e 2.000 no Médio (antes 1.000).
+- **Profundidade de campo:** abertura 0,0004 e desfoque máximo 0,009. Ajustada para não desfocar a praça, mas o desfoque de primeiro plano ainda é fraco.
+- **Vaga-lumes:** maiores, com disco suave e halo, lidos como bokeh.
+- **Clima:** quatro opções, escolhidas no menu de gráficos: hora dourada (padrão), crepúsculo, chuva (linhas de chuva com névoa cinza) e neve (flocos). O clima troca névoa, céu, cor e intensidade do sol.
+- **Interface:** painéis com moldura dourada dupla, caixa de diálogo em azul-marinho, e um relógio de tempo de jogo que avança a partir das 18:12 com o nome do clima.
+
+Limitações observadas nesta passagem:
+- A praça ficou muito clara, com bloom excessivo nas pedras. Não corrigida nesta rodada.
+- O desfoque de primeiro plano é fraco. As referências têm desfoque forte nas bordas da imagem.
+- Os climas crepúsculo e neve foram verificados só em captura; o chuva foi verificado visualmente.
+- O GTAO continua desligado por padrão.
+
+Capturas desta passagem: `docs/screenshots/v3_*.png`.
+
 ## 6. Testes e verificações executados
 
 | Verificação | Resultado |

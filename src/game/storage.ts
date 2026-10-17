@@ -3,6 +3,7 @@
 import { SAVE_KEY, SETTINGS_KEY, PresetName } from '../core/config';
 import { QuestState, FragmentId, initialQuest, Stage } from './quest';
 import { Cell } from '../world/layout';
+import type { WeatherName } from '../world/atmosphere';
 
 export interface SaveData {
   version: 1;
@@ -92,19 +93,24 @@ export interface StoredSettings {
   preset: PresetName;
   overrides: Partial<Record<string, boolean>>;
   showMetrics: boolean;
+  weather: WeatherName;
 }
 
+const WEATHER_NAMES: WeatherName[] = ['dourado', 'crepusculo', 'chuva', 'neve'];
+
 export function loadSettings(storage: KeyValueStorage | null): StoredSettings {
-  const fallback: StoredSettings = { preset: 'alto', overrides: {}, showMetrics: false };
+  const fallback: StoredSettings = { preset: 'alto', overrides: {}, showMetrics: false, weather: 'dourado' };
   try {
     const raw = storage?.getItem(SETTINGS_KEY);
     if (!raw) return fallback;
     const data = JSON.parse(raw) as Partial<StoredSettings>;
     const preset: PresetName = data.preset === 'baixo' || data.preset === 'medio' || data.preset === 'alto' ? data.preset : 'alto';
+    const weather: WeatherName = WEATHER_NAMES.includes(data.weather as WeatherName) ? (data.weather as WeatherName) : 'dourado';
     return {
       preset,
       overrides: data.overrides && typeof data.overrides === 'object' ? data.overrides : {},
       showMetrics: Boolean(data.showMetrics),
+      weather,
     };
   } catch {
     return fallback;

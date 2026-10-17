@@ -177,7 +177,7 @@ export function buildVillage(assets: Assets, wind: WindUniforms): Village {
   pedestal.position.set(PORTAL.x, portalY + 0.25, PORTAL.z);
   pedestal.castShadow = true;
   group.add(pedestal);
-  const ringMat = new THREE.MeshStandardMaterial({ color: '#8ff7ff', emissive: '#7ff0ff', emissiveIntensity: 2.2, roughness: 0.3 });
+  const ringMat = new THREE.MeshStandardMaterial({ color: '#8ff7ff', emissive: '#7ff0ff', emissiveIntensity: 1.1, roughness: 0.3 });
   const ring = new THREE.Mesh(new THREE.TorusGeometry(1.45, 0.11, 10, 48), ringMat);
   ring.position.set(PORTAL.x, portalY + 2.0, PORTAL.z);
   ring.castShadow = true;

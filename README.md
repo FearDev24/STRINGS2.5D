@@ -83,6 +83,8 @@ O progresso é salvo em `localStorage` (chave `strings25d.save.v1`). Use "Reinic
 
 No menu de pausa, "Configurações gráficas": presets Baixo, Médio e Alto, e cada efeito pode ser ligado ou desligado individualmente (sombras, GTAO, bloom, profundidade de campo, raios de sol, névoa, vaga-lumes, folhas). Trocar o preset reconstrói a vegetação.
 
+O mesmo menu escolhe o clima: Hora dourada (padrão), Crepúsculo, Chuva ou Neve. O relógio no canto superior direito mostra a hora de jogo e o clima atual.
+
 ## Capturas
 
 `docs/screenshots/` contém capturas reais tiradas do jogo em execução. Para gerar novas, abra `http://127.0.0.1:5173/?capture=1` e use o console (`window.__strings25d`), com o servidor de desenvolvimento ativo. O endpoint `/__capture` existe só no servidor de desenvolvimento e grava os PNGs nessa pasta.

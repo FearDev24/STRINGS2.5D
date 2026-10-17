@@ -23,14 +23,14 @@ export class PostFX {
     this.ao = new GTAOPass(scene, camera, width, height);
     this.ao.blendIntensity = 0.9;
     this.composer.addPass(this.ao);
-    this.bokeh = new BokehPass(scene, camera, { focus: 10, aperture: 0.00035, maxblur: 0.006 });
+    this.bokeh = new BokehPass(scene, camera, { focus: 10, aperture: 0.0004, maxblur: 0.009 });
     this.composer.addPass(this.bokeh);
-    this.bloom = new UnrealBloomPass(new THREE.Vector2(width, height), 0.32, 0.55, 0.88);
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(width, height), 0.55, 0.7, 0.72);
     this.composer.addPass(this.bloom);
     this.output = new OutputPass();
     this.composer.addPass(this.output);
     renderer.toneMapping = THREE.ACESFilmicToneMapping;
-    renderer.toneMappingExposure = 1.05;
+    renderer.toneMappingExposure = 1.12;
   }
 
   apply(t: EffectToggles, dofOn: boolean): void {

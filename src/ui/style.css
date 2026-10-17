@@ -1,8 +1,8 @@
 /* Interface minimalista em tons de pedra, ouro e índigo. Painéis pequenos para não cobrir a cena. */
 :root {
   --ink: #15121c;
-  --panel: rgba(22, 18, 30, 0.72);
-  --panel-border: rgba(217, 164, 65, 0.55);
+  --panel: rgba(16, 20, 38, 0.82);
+  --panel-border: rgba(233, 196, 106, 0.85);
   --gold: #e9c46a;
   --gold-soft: #f6e3b0;
   --text: #f3eee2;
@@ -38,7 +38,12 @@ html, body {
   padding: 8px 12px;
   backdrop-filter: blur(4px);
   font-size: 14px;
+  /* moldura dourada dupla, como nos painéis da referência */
+  box-shadow: 0 0 0 3px rgba(10, 8, 4, 0.6), inset 0 0 0 1px rgba(233, 196, 106, 0.25);
 }
+.clock { top: 14px; right: 14px; text-align: center; min-width: 124px; padding: 6px 14px; }
+#clock-time { font-size: 22px; color: var(--gold-soft); letter-spacing: 0.06em; font-variant-numeric: tabular-nums; }
+#clock-label { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; }
 .area-label { top: 14px; left: 14px; color: var(--gold-soft); letter-spacing: 0.04em; }
 .hp { top: 48px; left: 14px; display: flex; gap: 4px; padding: 6px 10px; }
 .heart {
@@ -47,11 +52,11 @@ html, body {
 }
 .heart.on { background: linear-gradient(135deg, #ff7a6b, #c2453d); }
 
-.quest { top: 14px; right: 14px; max-width: min(340px, 44vw); }
+.quest { top: 96px; right: 14px; max-width: min(340px, 44vw); }
 .quest-title { color: var(--gold); font-size: 12px; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 2px; }
 #objective { line-height: 1.35; }
 
-.metrics { top: 118px; right: 14px; font-family: Consolas, monospace; font-size: 12px; color: var(--muted); line-height: 1.5; }
+.metrics { top: 200px; right: 14px; font-family: Consolas, monospace; font-size: 12px; color: var(--muted); line-height: 1.5; }
 
 .prompt {
   bottom: 170px; left: 50%; transform: translateX(-50%);
@@ -74,7 +79,9 @@ html, body {
 .dialog {
   left: 50%; bottom: 18px; transform: translateX(-50%);
   width: min(720px, calc(100vw - 32px));
-  background: var(--panel); border: 1px solid var(--gold); border-radius: var(--radius);
+  background: linear-gradient(180deg, rgba(24, 34, 70, 0.94), rgba(12, 16, 36, 0.94));
+  border: 2px solid var(--gold); border-radius: 4px;
+  box-shadow: 0 0 0 3px rgba(10, 8, 4, 0.7), 0 0 0 4px rgba(233, 196, 106, 0.6), 0 10px 30px rgba(0, 0, 0, 0.45);
   padding: 14px 18px 12px; min-height: 96px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
 }

@@ -1,6 +1,7 @@
 // Ponto de entrada: carrega os assets gerados, monta o mundo, roda o loop e liga sistemas.
 import * as THREE from 'three';
 import { PRESETS, PresetName, EffectToggles, Preset } from './core/config';
+import { WEATHERS, WeatherName } from './world/atmosphere';
 import { Input } from './core/input';
 import { loadAssets, Assets } from './render/assets';
 import { WindUniforms, createWindUniforms } from './render/materials';
@@ -95,6 +96,7 @@ class Game {
     this.hud.bindGraphics({
       preset: (p) => this.setPreset(p),
       toggle: (key, value) => this.setToggle(key, value),
+      weather: (w) => this.setWeather(w),
       back: () => this.closeGraphics(),
     });
     this.hud.bindComplete(() => {
@@ -149,6 +151,7 @@ class Game {
     const vegetation = buildVegetation({ assets: this.assets, preset, grid, wind: this.uniforms });
     const corruption = buildCorruption(this.assets, preset.particleRate);
     const atmosphere = buildAtmosphere(this.assets, preset);
+    atmosphere.setWeather(this.settings.weather);
     return { grid, vegetation, corruption, atmosphere };
   }
 
@@ -191,7 +194,7 @@ class Game {
     this.graphicsOpen = true;
     this.hud.showPause(false);
     this.hud.showGraphics(true);
-    this.hud.syncGraphics(this.settings.preset, this.effectiveToggles());
+    this.hud.syncGraphics(this.settings.preset, this.effectiveToggles(), this.settings.weather);
   }
 
   private closeGraphics(): void {
@@ -205,7 +208,7 @@ class Game {
     this.settings.overrides = {};
     saveSettings(this.storage, this.settings);
     this.rebuildDynamic();
-    this.hud.syncGraphics(p, this.effectiveToggles());
+    this.hud.syncGraphics(p, this.effectiveToggles(), this.settings.weather);
     this.hud.toast(`Preset ${PRESETS[p].label} aplicado.`, 1800);
   }
 
@@ -213,8 +216,29 @@ class Game {
     this.settings.overrides = { ...this.settings.overrides, [key]: value };
     saveSettings(this.storage, this.settings);
     this.applyToggles();
-    this.hud.syncGraphics(this.settings.preset, this.effectiveToggles());
+    this.hud.syncGraphics(this.settings.preset, this.effectiveToggles(), this.settings.weather);
   }
+
+  private setWeather(w: WeatherName): void {
+    this.settings.weather = w;
+    saveSettings(this.storage, this.settings);
+    this.dyn.atmosphere.setWeather(w);
+    this.clockKey = '';
+    this.hud.syncGraphics(this.settings.preset, this.effectiveToggles(), w);
+    this.hud.toast(`Clima: ${WEATHERS[w].label}.`, 1800);
+  }
+
+  /** Relógio de jogo: avança 2 minutos por segundo a partir das 18:12. */
+  private updateClock(): void {
+    const minutes = (18 * 60 + 12 + Math.floor(this.t * 2)) % 1440;
+    const time = `${String(Math.floor(minutes / 60)).padStart(2, '0')}:${String(minutes % 60).padStart(2, '0')}`;
+    const label = WEATHERS[this.settings.weather].label;
+    const key = `${time}|${label}`;
+    if (key === this.clockKey) return;
+    this.clockKey = key;
+    this.hud.setClock(time, label);
+  }
+  private clockKey = '';
 
   private toggleMetrics(): void {
     this.metricsOpen = !this.metricsOpen;
@@ -365,6 +389,7 @@ class Game {
       }
     }
     this.hud.updateDialog(dt);
+    this.updateClock();
 
     const cam = this.cam.camera.position;
     this.player.setCamera(cam.x, cam.z);
@@ -492,6 +517,7 @@ class Game {
       },
       talkHerald: () => this.talkHerald(),
       setPreset: (p: PresetName) => this.setPreset(p),
+      setWeather: (w: WeatherName) => this.setWeather(w),
     };
   }
 }

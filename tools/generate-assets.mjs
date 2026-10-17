@@ -151,11 +151,12 @@ function doorAndWindow() {
 function leafClusters() {
   const atlas = new Raster(256, 256);
   const frames = {};
+  // Duas famílias de cor: verdes saturados e copas de outono (laranja e vermelho), como na referência.
   const palettes = [
-    ['#2f6b2b', '#4f9a3a', '#8cc85a'],
-    ['#345f1f', '#5c8a2a', '#a4c24e'],
-    ['#27573a', '#3f8a55', '#79b982'],
-    ['#4a5f22', '#7d8f2e', '#c8b64a'],
+    ['#2f7a2c', '#58a83a', '#9ad65a'],
+    ['#4a7a22', '#86a83a', '#d4c24a'],
+    ['#b8461e', '#e0762a', '#ffb04a'],
+    ['#8a2a1a', '#c4502a', '#f08a3a'],
   ];
   for (let k = 0; k < 4; k++) {
     const rng = mulberry32(900 + k * 13);
