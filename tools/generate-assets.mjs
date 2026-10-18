@@ -5,6 +5,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Raster, hex, mulberry32, fbm } from './raster.mjs';
+import { drawHero } from './hero-art.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const OUT = join(ROOT, 'public', 'assets');
@@ -383,7 +384,7 @@ function heroSheet(cfg, dirs, poses, anims) {
   dirs.forEach((dir, row) => {
     poses.forEach((pose, col) => {
       const f = new Raster(FW, FH);
-      humanoid(f, { ...cfg, dir, pose });
+      drawHero(f, { ...cfg, dir, pose });
       f.outline(OUTLINE);
       sheet.blit(f, col * FW, row * FH);
       frames[`${dir}_${pose}`] = { x: col * FW, y: row * FH, w: FW, h: FH };
