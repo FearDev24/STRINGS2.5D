@@ -1,110 +1,30 @@
-# Strings — Vila do Primeiro Fio (experimento 2.5D)
+# Strings 2.5D — Vila do Primeiro Fio
 
-Demonstração técnica jogável, em 2.5D, ambientada no universo Strings. É um experimento independente: não modifica o MMORPG Strings nem usa seus assets.
+Experimento jogável em navegador que explora uma versão 2.5D do universo Strings. O jogador percorre uma vila, coleta Ecos e enfrenta uma criatura corrompida em uma missão curta com progresso salvo localmente.
 
-- **Motor:** Three.js 0.170 + TypeScript + Vite 6 (WebGL2)
-- **Recursos gráficos:** todos gerados por código (`tools/generate-assets.mjs`). Nenhum arquivo de terceiros.
-- **Serviços externos:** nenhum, em tempo de execução. Tudo roda localmente.
+## Destaques
 
-Veja também: [RELATORIO_TECNICO.md](RELATORIO_TECNICO.md) (implementação, avaliação de fidelidade e limitações) e [docs/ASSET_REGISTRY.md](docs/ASSET_REGISTRY.md) (registro de assets).
+- mundo contínuo com vila, bosque e zona corrompida;
+- personagem controlável, aldeões, Arauto, criatura com IA e fragmentos;
+- diálogo, missão com estados, combate e persistência em `localStorage`;
+- câmera em perspectiva, vegetação instanciada, partículas, iluminação e presets gráficos;
+- 24 testes automatizados de missão, armazenamento, layout e assets.
 
-## Requisitos (Windows)
+## Stack
 
-- Node.js 20 ou mais recente (testado com Node 24) e npm.
-- Navegador com WebGL2 (Chrome ou Edge atualizados).
-
-## Instalação
-
-```bash
-npm install
-```
-
-Instala Three.js, Vite, Vitest e TypeScript (dependências declaradas em `package.json`).
-
-## Gerar os assets
-
-```bash
-npm run assets
-```
-
-Escreve `public/assets/**` (PNG + JSON de metadados de animação + `manifest.json`) e `docs/ASSET_REGISTRY.md`. Os assets já estão gerados neste diretório; rode de novo só para regenerar.
+Three.js, TypeScript, Vite, WebGL2 e Vitest. Os assets são gerados por código e não há chamadas de rede durante o jogo.
 
 ## Executar
 
+Requer Node.js 20+ e navegador com WebGL2.
+
 ```bash
+npm install
 npm run dev
 ```
 
-Abra `http://127.0.0.1:5173/`.
-
-## Gerar a versão de produção
-
-```bash
-npm run build
-npm run preview
-```
-
-`build` faz a checagem de tipos (`tsc --noEmit`) e empacota em `dist/`. `preview` serve em `http://127.0.0.1:4173/`.
-
-## Testes automatizados
-
-```bash
-npm test
-```
-
-Vitest, 24 testes:
-- `tests/quest.test.ts`: máquina de estados da missão (ordem, duplicatas, travas de etapa).
-- `tests/storage.test.ts`: persistência local, saves corrompidos, armazenamento bloqueado.
-- `tests/layout.test.ts`: alcance de todos os pontos de interesse (busca em largura), presets, determinismo das árvores.
-- `tests/assets.test.ts`: PNGs válidos, dimensões do manifesto, quadros e animações dentro dos limites.
-
-Os testes de comportamento em navegador (conversa, coleta, combate, conclusão, persistência) foram executados manualmente pelo console de depuração, descritos no relatório técnico. Não há suíte automatizada de navegador neste repositório.
+Abra `http://127.0.0.1:5173/`. Para produção e testes: `npm run build` e `npm test`.
 
 ## Controles
 
-| Ação | Tecla |
-|---|---|
-| Mover (um passo por célula) | WASD ou setas |
-| Conversar / continuar diálogo | E (ou Enter no diálogo) |
-| Atacar (vira-se para a criatura próxima) | J ou Espaço |
-| Menu de pausa / configurações | Esc |
-| Métricas técnicas (FPS, draw calls, triângulos) | F3 |
-
-## Como jogar a missão
-
-1. Fale com o Arauto na praça (E).
-2. Encontre os três Ecos luminosos no Bosque das Cordas, a leste (passe sobre eles).
-3. Derrote a criatura corrompida na zona roxa, mais a leste (J ou Espaço, de frente para ela).
-4. Volte ao Arauto e entregue os Ecos (E). A missão é concluída e o progresso fica salvo no navegador.
-
-O progresso é salvo em `localStorage` (chave `strings25d.save.v1`). Use "Reiniciar progresso" no menu de pausa para começar de novo.
-
-## Configurações gráficas
-
-No menu de pausa, "Configurações gráficas": presets Baixo, Médio e Alto, e cada efeito pode ser ligado ou desligado individualmente (sombras, GTAO, bloom, profundidade de campo, raios de sol, névoa, vaga-lumes, folhas). Trocar o preset reconstrói a vegetação.
-
-O mesmo menu escolhe o clima: Hora dourada (padrão), Crepúsculo, Chuva ou Neve. O relógio no canto superior direito mostra a hora de jogo e o clima atual.
-
-## Capturas
-
-`docs/screenshots/` contém capturas reais tiradas do jogo em execução. Para gerar novas, abra `http://127.0.0.1:5173/?capture=1` e use o console (`window.__strings25d`), com o servidor de desenvolvimento ativo. O endpoint `/__capture` existe só no servidor de desenvolvimento e grava os PNGs nessa pasta.
-
-## Estrutura
-
-```
-index.html                  interface (overlays, HUD, menus)
-src/
-  main.ts                   montagem, loop, combate, missão, configurações
-  core/                     config (presets), rng determinístico, entrada do teclado
-  game/                     quest (máquina de estados), storage (persistência com validação)
-  world/                    layout (grade, colisão), terrain, vegetation, village, atmosphere
-  render/                   assets (carregamento), materials (vento), camera, postfx
-  entities/                 characters (jogador, NPCs, criatura, fragmentos), billboard, partículas
-  ui/                       hud.ts e style.css
-tools/
-  raster.mjs                rasterizador RGBA e encoder PNG (sem dependências)
-  generate-assets.mjs       gera todos os PNGs e metadados
-tests/                      Vitest
-public/assets/              assets gerados
-docs/                       registro de assets, capturas
-```
+WASD/setas movem; `E` interage; `J` ou Espaço ataca; `Esc` abre o menu; `F3` mostra métricas.
